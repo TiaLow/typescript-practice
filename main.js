@@ -1,4 +1,17 @@
 "use strict";
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
 exports.__esModule = true;
 var message = 'Sup! Welcome Back!';
 console.log(message);
@@ -126,3 +139,50 @@ function add3(num1, num2) {
 }
 add3(5, 10); // 15
 add3(5); // 15
+// --- INTERFACES ---
+function fullName(person) {
+    console.log(person.firstName + " " + person.lastName);
+}
+var peep = {
+    firstName: 'Tia',
+    lastName: 'Low'
+};
+fullName(peep); // Tia Low
+function fullName2(person) {
+    console.log(person.firstName + " " + person.lastName);
+}
+var peep2 = {
+    firstName: 'tia'
+};
+fullName2(peep2);
+// --- CLASS and ACCESS MODIFIERS---
+// typescript supports classes to build apps using object-oriented class-based approach
+var Employee = /** @class */ (function () {
+    function Employee(name) {
+        this.employeeName = name;
+    }
+    Employee.prototype.greet = function () {
+        console.log("Good morning " + this.employeeName);
+    };
+    return Employee;
+}());
+var employee1 = new Employee('Tia');
+console.log(employee1.employeeName); // Tia
+employee1.greet(); // Good morning Tia
+var Manager = /** @class */ (function (_super) {
+    __extends(Manager, _super);
+    // accepts a main parameter that is used to initialize the base Employee class constructor
+    function Manager(managerName) {
+        return _super.call(this, managerName) || this;
+    }
+    // when you instantiate a new Manager, the Manager class constructor calls the Employee class constructor to initialize the employeeName property
+    // add a method to Manager class
+    Manager.prototype.delegateWork = function () {
+        console.log("Manager delegating tasks");
+    };
+    return Manager;
+}(Employee));
+var manager1 = new Manager('Bruce');
+manager1.delegateWork(); // Manager delegating tasks
+manager1.greet(); // Good morning Bruce
+console.log(manager1.employeeName); // Bruce

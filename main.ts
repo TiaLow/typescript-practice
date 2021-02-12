@@ -166,4 +166,82 @@ add3(5, 10) // 15
 add3(5)  // 15
 
 
+// --- INTERFACES ---
+
+function fullName(person: {firstName: string, lastName: string}) {
+  console.log(`${person.firstName} ${person.lastName}`)
+}
+
+let peep = {
+  firstName: 'Tia',
+  lastName: 'Low'
+};
+
+fullName(peep); // Tia Low
+
+// the above is ok becuase there are only two properties, but it isnt scalable
+// as a solution we have interfaces
+// create it for an object and then use it as a type
+
+interface Person {
+  firstName: string;
+  lastName?: string; // adding a ? makes it optional
+}
+
+function fullName2(person: Person){
+  console.log(`${person.firstName} ${person.lastName}`)
+}
+
+let peep2 = {
+  firstName: 'tia'
+}
+
+fullName2(peep2)
+
+// --- CLASS and ACCESS MODIFIERS---
+// typescript supports classes to build apps using object-oriented class-based approach
+
+class Employee {
+  employeeName: string;
+
+  constructor(name: string) {
+    this.employeeName = name;
+  }
+
+  greet() {
+    console.log(`Good morning ${this.employeeName}`)
+  }
+}
+
+let employee1 = new Employee('Tia');
+console.log(employee1.employeeName);  // Tia
+employee1.greet();  // Good morning Tia
+
+
+
+class Manager extends Employee {
+  // accepts a main parameter that is used to initialize the base Employee class constructor
+
+  constructor(managerName: string) {
+    super(managerName)
+  }
+
+  // when you instantiate a new Manager, the Manager class constructor calls the Employee class constructor to initialize the employeeName property
+
+  // add a method to Manager class
+
+  delegateWork(){
+    console.log(`Manager delegating tasks`)
+  }
+}
+
+let manager1 = new Manager('Bruce');
+manager1.delegateWork();  // Manager delegating tasks
+manager1.greet(); // Good morning Bruce
+console.log(manager1.employeeName) // Bruce
+
+
+
+
+
 
