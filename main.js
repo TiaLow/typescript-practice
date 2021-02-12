@@ -57,3 +57,40 @@ console.log(p); //6
 var randomValue = 10;
 randomValue = true;
 randomValue = 'Tia';
+var myVariable = 10;
+// none of the below work, but they dont throw errors because type is any
+console.log(myVariable.name);
+myVariable();
+myVariable.toUpperCase();
+// --- UNKNOWN Data Type ---
+// similar to any data type, but you can't access any properties of an unknown type unless you tell it what it is
+var myVar = 'tia';
+myVar.toUpperCase();
+// type "assertion" which is similar to "type casting" in other languages
+// function to determine if an object has a name property
+// has parameter object of type any, going to return an object that contains name property as a string
+// 
+function hasName(obj) {
+    // making a check to see if name property exists in object or not
+    return !!obj &&
+        typeof obj === "object" &&
+        "name" in obj;
+}
+if (hasName(myVariable)) {
+    console.log(myVariable.name);
+}
+// TYPE INFERENCE
+// only works on variables that are initialized in the example below with b
+var a;
+a = 10;
+a = true;
+var b = 20;
+b = true;
+// typescript inferred the type of variable b
+// --- UNION Data Types ---
+// specify union of types for same variable 
+// handy when type is out of your control (receiving data from API, user, etc)
+// good for intellisense since it knows it can either be number or boolean
+var multiType;
+multiType = 20;
+multiType = true;
