@@ -123,5 +123,47 @@ multiType = 20;
 multiType = true;
 
 
+// --- FUNCTIONS ---
+
+//                                       telling it return type as well
+function add(num1: number, num2: number): number {
+  return num1 + num2;
+}
+
+add(5, 10);
+add('tia', 5) // knows its not a number. static type checking for parameters
+
+
+// in typescript every parameter is assumed to be required by the function. if you call it without a parameter it will throw an error (diff than plain JS where it would have just made that missing parameter to be undefined)
+
+// adding a ? after makes it optional
+// OPTIONAL PARAMETERS must ALWAYS be after the required ones
+
+function add2(num1: number, num2?: number): number {
+
+  if(num2){
+    return num1 + num2;
+  }  else {
+    return num1;
+  }
+}
+
+add2(5, 10);
+add2(5) // in this case the second paramtere is treated as undefined
+
+// -- DEFAULT PARAMETERS ---
+
+function add3(num1: number, num2: number = 10): number {
+
+  if(num2){
+    return num1 + num2;
+  }  else {
+    return num1;
+  }
+}
+
+add3(5, 10) // 15
+add3(5)  // 15
+
 
 
