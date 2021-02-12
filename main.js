@@ -186,3 +186,15 @@ var manager1 = new Manager('Bruce');
 manager1.delegateWork(); // Manager delegating tasks
 manager1.greet(); // Good morning Bruce
 console.log(manager1.employeeName); // Bruce
+// --- ACCESS MODIFIERS ---
+// keywords that set the access ability of properties and methods in a class
+// by default, each is Public
+// PUBLIC (default)
+// free accessiblity
+// PRIVATE
+// accessibility only within the class
+// cannot be accessed from outside it's containing class
+// cannot even be access by a class that extends the base one
+// PROTECTED
+// accessiblity within a class and the classes derived from it
+// used when it shouldnt be accessed outside class, but it can be accessed by direct classes that extend the base 
